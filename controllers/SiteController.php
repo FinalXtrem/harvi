@@ -176,6 +176,49 @@ class SiteController extends Controller
         return $this->render('stat', ['users' => $users, 'sort' => $sort, 'order' => $order, 'verdicts' => $verdicts]);
     }
 
+    /**
+     * @param $method
+     * @param $url
+     * @param bool|false $data
+     * @return mixed
+     */
+    function callAPI($method, $url, $data = false)
+    {
+        $curl = curl_init($url);
+        switch ($method) {
+            case "POST":
+                curl_setopt($curl, CURLOPT_POST, 1);
+
+                if ($data)
+                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+                break;
+            case "PUT":
+                curl_setopt($curl, CURLOPT_PUT, 1);
+                break;
+            default:
+                if ($data)
+                    $url = sprintf("%s?%s", $url, http_build_query($data));
+        }
+
+        // Optional Authentication:
+        //curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        //curl_setopt($curl, CURLOPT_USERPWD, "username:password");
+
+        //curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, ['Origin: https://jollybeeoj.com',
+            'Access-Control-Request-Method: POST',
+            'Access-Control-Headers: X-Requested-With']);
+        curl_setopt($curl, CURLOPT_VERBOSE, true);
+
+        $result = curl_exec($curl);
+        curl_close($curl);
+
+        return $result;
+    }
+
     public function actionStat2($sort = false, $order = false, $refresh = false)
     {
         if (!$sort && !$order) {
@@ -315,48 +358,5 @@ class SiteController extends Controller
         array_multisort(array_column($users, $sort), ($order == 'asc' ? SORT_ASC : ($order == 'desc' ? SORT_DESC : SORT_ASC)), $users);
 
         return $this->render('stat3', ['users' => $users, 'sort' => $sort, 'order' => $order, 'verdicts' => $verdicts]);
-    }
-
-    /**
-     * @param $method
-     * @param $url
-     * @param bool|false $data
-     * @return mixed
-     */
-    function callAPI($method, $url, $data = false)
-    {
-        $curl = curl_init($url);
-        switch ($method) {
-            case "POST":
-                curl_setopt($curl, CURLOPT_POST, 1);
-
-                if ($data)
-                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-                break;
-            case "PUT":
-                curl_setopt($curl, CURLOPT_PUT, 1);
-                break;
-            default:
-                if ($data)
-                    $url = sprintf("%s?%s", $url, http_build_query($data));
-        }
-
-        // Optional Authentication:
-        //curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-        //curl_setopt($curl, CURLOPT_USERPWD, "username:password");
-
-        //curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, ['Origin: https://jollybeeoj.com',
-            'Access-Control-Request-Method: POST',
-            'Access-Control-Headers: X-Requested-With']);
-        curl_setopt($curl, CURLOPT_VERBOSE, true);
-
-        $result = curl_exec($curl);
-        curl_close($curl);
-
-        return $result;
     }
 }
