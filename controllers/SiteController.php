@@ -158,7 +158,7 @@ class SiteController extends Controller
             ];
             foreach ($users as $i => $value) {
                 if (isset($value['username']) && $value['username'] != '') {
-                    $temp = Json::decode($this->callAPI('POST', 'https://jollybeeoj.com/submission/statistic/user/u/' . $value['username']));
+                    $temp = Json::decode($this->callAPI('POST', 'https://jollybeeoj.com/submission/statistic/user/u/', array('username' => $value['username'])));
                     if ($temp != null) {
                         foreach ($verdicts as $j => $value2) {
                             $key = array_search($value2, array_column($temp, 'verdictDisplayName'));
@@ -265,7 +265,7 @@ class SiteController extends Controller
             ];
             foreach ($users as $i => $value) {
                 if (isset($value['username']) && $value['username'] != '') {
-                    $temp = Json::decode($this->callAPI('POST', 'https://jollybeeoj.com/submission/statistic/user/u/' . $value['username']));
+                    $temp = Json::decode($this->callAPI('POST', 'https://jollybeeoj.com/submission/statistic/user/u/', array('username' => $value['username'])));
                     if ($temp != null) {
                         foreach ($verdicts as $j => $value2) {
                             $key = array_search($value2, array_column($temp, 'verdictDisplayName'));
@@ -344,7 +344,7 @@ class SiteController extends Controller
             ];
             foreach ($users as $i => $value) {
                 if (isset($value['username']) && $value['username'] != '') {
-                    $temp = Json::decode($this->callAPI('POST', 'https://jollybeeoj.com/submission/statistic/user/u/' . $value['username']));
+                    $temp = Json::decode($this->callAPI('POST', 'https://jollybeeoj.com/submission/statistic/user/u/', array('username' => $value['username'])));
                     if ($temp != null) {
                         foreach ($verdicts as $j => $value2) {
                             $key = array_search($value2, array_column($temp, 'verdictDisplayName'));
