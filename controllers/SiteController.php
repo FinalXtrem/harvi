@@ -145,7 +145,7 @@ class SiteController extends Controller
                 ['nim' => '1801400846', 'name' => 'Aurelia Friska Widjaja', 'username' => 'aureliafriska', 'AC' => 0, 'OLE' => 0, 'TLE' => 0, 'CE' => 0, 'MLE' => 0, 'RTE' => 0, 'WA' => 0],
                 ['nim' => '1801409580', 'name' => 'Jerry Luis', 'username' => 'jerry', 'AC' => 0, 'OLE' => 0, 'TLE' => 0, 'CE' => 0, 'MLE' => 0, 'RTE' => 0, 'WA' => 0],
                 ['nim' => '1801414744', 'name' => 'Raoul Vendreo Achdiyat', 'username' => 'rva', 'AC' => 0, 'OLE' => 0, 'TLE' => 0, 'CE' => 0, 'MLE' => 0, 'RTE' => 0, 'WA' => 0],
-                ['nim' => '1801417733', 'name' => 'Tadeo Lemuel Christian Lianda', 'username' => 'tadeolcl', 'AC' => 0, 'OLE' => 0, 'TLE' => 0, 'CE' => 0, 'MLE' => 0, 'RTE' => 0, 'WA' => 0],
+                ['nim' => '1801417733', 'name' => 'Tadeo Lemuel Christian Lianda', 'username' => 'tadeolianda', 'AC' => 0, 'OLE' => 0, 'TLE' => 0, 'CE' => 0, 'MLE' => 0, 'RTE' => 0, 'WA' => 0],
                 ['nim' => '1801417815', 'name' => 'Theodore Junot Harbangan', 'username' => 'junot', 'AC' => 0, 'OLE' => 0, 'TLE' => 0, 'CE' => 0, 'MLE' => 0, 'RTE' => 0, 'WA' => 0],
                 ['nim' => '1801418894', 'name' => 'Petter John', 'username' => 'petterjohn', 'AC' => 0, 'OLE' => 0, 'TLE' => 0, 'CE' => 0, 'MLE' => 0, 'RTE' => 0, 'WA' => 0],
                 ['nim' => '1801426800', 'name' => 'Jonathan Saputra Halim ( Joy )', 'username' => 'raphaeljonathan88', 'AC' => 0, 'OLE' => 0, 'TLE' => 0, 'CE' => 0, 'MLE' => 0, 'RTE' => 0, 'WA' => 0],
